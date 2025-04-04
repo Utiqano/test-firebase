@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "3yJlZosC-pbJKwn0Q",
+      });
+   })();
+</script>
+  <!-- 🔹 Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <img /* 🔹 Généralisation : Tous les titres en rouge */
+h1, h2, h3, h4, h5, h6 {
+    color: red;
+}
+
+/* 🔹 General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+}
+
+/* 🔹 Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🔹 Center Menu */
+.center-menu {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* 🔹 Sections */
+.section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation Fade-In pour les sections */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.6s forwards;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔹 Hidden */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 🔹 Animation d'entrée pour les boutons */
+@keyframes buttonEntry {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 🔹 Boutons uniformisés avec animation d'entrée */
+.btn-custom {
+    position: relative;
+    overflow: hidden;
+    width: 220px;           /* Largeur fixe */
+    height: 50px;           /* Hauteur fixe */
+    line-height: 50px;      /* Pour centrer verticalement le texte */
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00d4ff, #007bff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: buttonEntry 0.5s ease-out;
+}
+.btn-custom:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 150, 255, 0.5);
+}
+.btn-custom:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 12px rgba(0, 150, 255, 0.4);
+}
+.btn-custom:focus {
+    outline: 2px solid #00d4ff;
+    outline-offset: 3px;
+}
+
+/* 🔹 Ripple Effect */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+}
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 🔹 Sortable List */
+#sortable-list {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+#sortable-list li {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c);
+    padding: 12px;
+    margin: 8px 0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: grab;
+    transition: background 0.3s, transform 0.2s;
+}
+#sortable-list li:hover {
+    background: linear-gradient(45deg, #ff6381, #ff486a);
+    transform: scale(1.05);
+}
+#sortable-list li:active {
+    cursor: grabbing;
+}
+.dragging {
+    opacity: 0.5;
+    transform: scale(1.1);
+}
+
+/* 🔹 Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 🔹 Contact Section - Glassmorphism */
+#contactUs {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 420px;
+    margin: 50px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+#contactUs h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #00d4ff, #007bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#contactUs input,
+#contactUs textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    font-weight: bold;
+}
+#contactUs input::placeholder,
+#contactUs textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: normal;
+}
+#contactUs input:focus,
+#contactUs textarea:focus {
+    border-color: #00d4ff;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+#contactUs .btn-custom {
+    width: 220px;
+    margin-top: 15px;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    outline: none;
+    animation: buttonEntry 0.5s ease-out;
+}
+
+/* 🔹 Success Message - Smooth Animation */
+#formMessage {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #28a745;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+#formMessage.show {
+    opacity: 1;
+}
+
+/* 🔹 Responsive - Mobile */
+@media (max-width: 768px) {
+    #contactUs {
+        width: 90%;
+    }
+}
+
+/* 🔹 Résultat */
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00d4ff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* 🔹 Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    padding: 10px 0;
+}
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.navbar-logo {
+    max-height: 50px;
+}
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.navbar-menu li a:hover {
+    color: #00d4ff;
+}
+
+/* Bouton hamburger (masqué par défaut) */
+.navbar-toggle {
+    display: none;
+}
+
+/* Pour laisser la navbar au-dessus des autres éléments */
+body {
+    padding-top: 80px;
+}
+
+/* 🔹 Responsive Navbar pour Mobile */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .navbar-toggle .bar {
+        height: 3px;
+        width: 25px;
+        background-color: white;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+    .navbar-menu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    .navbar-menu.active {
+        transform: translateX(0);
+    }
+}
+src="https://th.bing.com/th/id/OIP.bg5Nu2yCbKS3Xh8P4mtaGQHaD8?rs=1&pid=ImgDetMain" alt="Photo Usine" class="navbar-logo">
+    <div class="navbar-toggle" id="mobile-menu" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="navbar-menu" id="navbar-menu">
+      <li><a href="#menu" onclick="retourMenu()">Accueil</a></li>
+      <li><a href="#audit5S" onclick="showSection('audit5S')">Audit 5S</a></li>
+      <li><a href="#auditGemba" onclick="showSection('auditGemba')">Audit Gemba</a></li>
+      <li><a href="#videoSection" onclick="showSection('videoSection')">Vidéos</a></li>
+      <li><a href="#resultatsMois" onclick="showSection('resultatsMois')">Résultats</a></li>
+      <li><a href="#sortableList" onclick="showSection('sortableList')">Pourcentage Février</a></li>
+      <li><a href="#contactUs" onclick="showSection('contactUs')">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit 5S & Gemba</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 🔹 Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="https://media.istockphoto.com/id/1443131962/de/video/bunte-finanzdiagramme-und-grafikanimation-infografik-4k-stock-video.mp4?s=mp4-640x640-is&k=20&c=k80qg7ZDrbbz_xqV8WaIv0K2eeCi_0wx2Vv0TlwpJy0=">
+        </video>
+    </div>
+
+    <!-- 🔹 Main Menu -->
+   <div id="menu" class="center-menu">
+    <h1>🔥 Amélioration Contenu 🔥</h1>
+    <button class="btn-custom" onclick="showSection('audit5S')">Audit 5S</button>
+    <button class="btn-custom" onclick="showSection('auditGemba')">Audit Gemba</button>
+    <button class="btn-custom" onclick="showSection('videoSection')">Vidéos</button>
+    <button class="btn-custom" onclick="showSection('resultatsMois')">Résultats Mois en Cours</button>
+    <button class="btn-custom" onclick="showSection('sortableList')">Pourcentage Mois février</button>
+    <button class="btn-custom" onclick="showSection('contactUs')">Contact</button>
+</div>
+
+    <!-- 🔹 Sections -->
+    <div id="audit5S" class="section">
+        <h2>Audit 5S</h2>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/YNkFgkXXhn', '_blank')">Réaliser Audit 5S</button>
+        <div class="sub-section">
+            <h3>Planning 5S</h3>
+            <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:x:/r/personal/houssine_trabelsi_wkw-group_com/Documents/App%20PDF/Planning%205S.xlsx?d=we62360ff0f0945b38656782a6158348f&csf=1&web=1&e=0Fsqyt')">
+                Afficher Planning Excel
+            </button>
+        </div>
+        <iframe src="https://www.youtube.com/embed/ntKqMhbqTII" allowfullscreen></iframe>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+  <div id="sortableList" class="section">
+    <h2>📌 Liste Drag & Drop</h2>
+    
+    <!-- 🔹 Pourcentage Display (Now Above the List) -->
+    <div id="percentageResult" class="result"></div>
+
+    <ul id="sortable-list">
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP1 Gemba', '82%')">Pourcentage UAP1 Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP1 Audit 5S', '82%')">Pourcentage UAP1 Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Logistique Gemba', '95%')">Pourcentage Logistique Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Logistique Audit 5S', '93%')">Pourcentage Logistique Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP2 Gemba ', '68%')">Pourcentage UAP2 Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP2 Audit 5S', '60%')">Pourcentage UAP2 Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage usine Gemba', '75%')">Pourcentage usine Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage usine Audit 5S ', '77%')">Pourcentage usine Audite 5S</li>
+    </ul>
+    <div id="percentageResult" class="result"></div>
+    <button class="btn-custom" onclick="retourMenu()">Retour</button>
+</div>
+
+    <div id="auditGemba" class="section">
+        <h2>Audit Gemba</h2>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/1nWmJsVRNb', '_blank')">Gemba OJT Ligne</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/0nhbJYckHs', '_blank')">Gemba Mur Qualité</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/Ps1y5HpJ8u', '_blank')">Gemba Magasin</button>
+        <div class="sub-section">
+            <h3>Planning Gemba</h3>
+            <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:x:/g/personal/houssine_trabelsi_wkw-group_com/ETxX6xG42nFJqQV1-PaMiFIB2aBMLG-Ux7JdHCwLSOYtIA?e=B1xLbs')">
+                Afficher Planning Excel
+            </button>
+        </div>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+    <div id="videoSection" class="section">
+        <h2>Vidéos</h2>
+        <iframe src="https://www.youtube.com/embed/ni5AtO-92YE" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/finG5RcRS1w" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/pE_ptDrpPDM" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/BweHTgi-L_Y" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/PlZpe_P7OU8" allowfullscreen></iframe>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+    <div id="resultatsMois" class="section">
+        <h2>Résultats Mois en Cours</h2>
+        <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/g/personal/houssine_trabelsi_wkw-group_com/EYu1MgciLrVGm3dGPb0BOcUBo7EGwPMDPLjZ1DMn1AsSgA?e=ajh92a')">
+            Résultat PDF Gemba
+        </button>
+        <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/g/personal/houssine_trabelsi_wkw-group_com/ET6tKctifcBMohew45M6SvQBaXEHNLrDsfBdE_cKsl1o0w?e=a2uQgH')">
+            Résultat PDF 5S
+        </button>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+    <div id="contactUs" class="section">
+        <h2>Contact</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Votre nom" required>
+            <input type="email" id="email" placeholder="Votre email" required>
+            <textarea id="message" placeholder="Votre message" required></textarea>
+            <button class="btn-custom" type="submit">Envoyer</button>
+        </form>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Drag and Drop functionality
+        const list = document.getElementById('sortable-list');
+        let draggedItem = null;
+
+        document.querySelectorAll('#sortable-list li').forEach(item => {
+            item.addEventListener('dragstart', function () {
+                draggedItem = this;
+                setTimeout(() => this.style.display = 'none', 0);
+            });
+
+            item.addEventListener('dragend', function () {
+                setTimeout(() => {
+                    draggedItem.style.display = 'block';
+                    draggedItem = null;
+                }, 0);
+            });
+
+            item.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+
+            item.addEventListener('dragenter', function () {
+                this.style.background = 'rgba(0, 150, 255, 0.5)';
+            });
+
+            item.addEventListener('dragleave', function () {
+                this.style.background = '';
+            });
+
+            item.addEventListener('drop', function () {
+                if (draggedItem !== this) {
+                    let items = Array.from(list.children);
+                    let draggedIndex = items.indexOf(draggedItem);
+                    let targetIndex = items.indexOf(this);
+
+                    if (draggedIndex < targetIndex) {
+                        this.after(draggedItem);
+                    } else {
+                        this.before(draggedItem);
+                    }
+                }
+                this.style.background = '';
+            });
+        });
+    </script>
+
+    <!-- 🔹 Footer -->
+    <div class="footer">
+        Créé par <span>le département Amélioration WKW</span> 🚀
+    </div>
+</body>
+</html>
