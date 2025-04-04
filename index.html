@@ -8,29 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #dc143c;
-            --secondary-color: #8b4513;
-            --light-bg: #f8f9fa;
-            --dark-bg: #1a1a1a;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --primary-color: #e63946;
+            --secondary-color: #457b9d;
+            --light-bg: #f1faee;
+            --dark-bg: #1d3557;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
             --red-color: #ff0000;
             --orange-color: #ff8000;
             --green-color: #00cc00;
             --text-color: #333;
             --body-bg: #fff;
-            --gradient-bg: linear-gradient(135deg, #dc143c, #8b4513);
-            --navbar-bg: linear-gradient(135deg, #dc143c, #8b4513);
-            --navbar-scrolled-bg: linear-gradient(135deg, rgba(220, 20, 60, 0.95), rgba(139, 69, 19, 0.95));
+            --gradient-bg: linear-gradient(135deg, #e63946, #457b9d);
+            --navbar-bg: linear-gradient(135deg, #e63946, #457b9d);
+            --navbar-scrolled-bg: linear-gradient(135deg, rgba(230, 57, 70, 0.9), rgba(69, 123, 157, 0.9));
         }
 
         .night-mode {
-            --text-color: #e0e0e0;
-            --body-bg: #121212;
-            --light-bg: #2a2a2a;
-            --dark-bg: #0d0d0d;
-            --navbar-bg: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            --navbar-scrolled-bg: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(26, 26, 26, 0.95));
+            --text-color: #f1faee;
+            --body-bg: #1d3557;
+            --light-bg: #457b9d;
+            --dark-bg: #14213d;
+            --navbar-bg: linear-gradient(135deg, #457b9d, #1d3557);
+            --navbar-scrolled-bg: linear-gradient(135deg, rgba(69, 123, 157, 0.9), rgba(29, 53, 87, 0.9));
         }
 
         body {
@@ -49,272 +49,221 @@
 
         .navbar {
             background: var(--navbar-bg);
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 1;
         }
 
         .navbar.scrolled {
             background: var(--navbar-scrolled-bg);
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.5rem;
+            backdrop-filter: blur(10px);
         }
 
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 800;
+            font-size: 1.6rem;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-        }
-
-        .navbar-brand:hover {
-            color: #fff;
-            transform: scale(1.05);
+            letter-spacing: 2px;
+            cursor: pointer;
         }
 
         .navbar-nav .nav-link {
             color: #fff !important;
-            font-weight: 500;
-            padding: 0.75rem 1rem !important;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem !important;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            margin: 0.25rem 0;
         }
 
         .navbar-nav .nav-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
         }
 
         .navbar .night-mode-toggle, .navbar .language-toggle {
             background: var(--gradient-bg);
             border: none;
-            padding: 0.75rem 1rem;
-            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
             color: #fff;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            margin: 0.25rem 0;
-        }
-
-        .navbar .night-mode-toggle:hover, .navbar .language-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-
-        .dropdown-menu {
-            background-color: var(--dark-bg);
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            width: 100%;
-            max-height: 60vh;
-            overflow-y: auto;
-        }
-
-        .dropdown-item {
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-
-        .navbar-collapse {
-            justify-content: flex-end;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, var(--light-bg) 0%, #e6e9f0 100%);
-            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--light-bg), rgba(230, 57, 70, 0.1));
+            padding: 6rem 0;
             margin-top: 60px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/gear.png') repeat;
+            opacity: 0.1;
+            animation: parallax 20s linear infinite;
         }
 
         .hero-section h1 {
             color: var(--primary-color);
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            opacity: 0;
-            transform: translateX(-100px) rotate(-10deg);
-            animation: slideInGear 1s ease-out 0.2s forwards;
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            animation: fadeInDown 0.8s ease forwards;
         }
 
         .hero-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 500;
             max-width: 90%;
             margin: 1rem auto;
             color: var(--text-color);
-            text-shadow: 0 0 5px rgba(220, 20, 60, 0.5);
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            padding: 0.2rem 0.5rem;
-            border-radius: 8px;
-            animation: conveyorText 12s ease-in-out infinite;
+            animation: fadeInDown 1s ease forwards 0.2s;
+            opacity: 0;
         }
 
         .center-image img {
-            max-width: 200px;
-            height: auto;
+            max-width: 280px;
             border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            transform: scale(0.5) rotate(0deg);
-            animation: spinIn 1.2s ease-out 1s forwards;
-        }
-
-        @keyframes slideInGear {
-            0% { opacity: 0; transform: translateX(-100px) rotate(-10deg); }
-            50% { transform: translateX(20px) rotate(5deg); }
-            100% { opacity: 1; transform: translateX(0) rotate(0deg); }
-        }
-
-        @keyframes spinIn {
-            0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(180deg); }
-            100% { opacity: 1; transform: scale(1) rotate(360deg); }
-        }
-
-        @keyframes conveyorText {
-            0% { transform: translateX(30px); opacity: 0.9; text-shadow: 0 0 5px rgba(220, 20, 60, 0.5); }
-            50% { transform: translateX(-30px); opacity: 1; text-shadow: 0 0 10px rgba(220, 20, 60, 0.7); }
-            100% { transform: translateX(30px); opacity: 0.9; text-shadow: 0 0 5px rgba(220, 20, 60, 0.5); }
-        }
-
-        .section-container {
-            padding: 3rem 0;
-            position: relative;
-        }
-
-        .percentage-alert {
-            padding: 1.5rem;
-            border-radius: 12px;
-            background-color: var(--light-bg);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        .percentage-alert.active {
-            opacity: 1;
-            transform: scale(1);
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .contact-form {
-            padding: 2rem;
-            background-color: var(--body-bg);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            max-width: 90%;
-            margin: 0 auto;
-            transition: var(--transition);
-            transform: translateY(50px);
+            animation: bounceIn 1.2s ease forwards 0.4s;
             opacity: 0;
         }
 
-        .contact-form.show {
-            animation: slideUpBounce 0.6s ease-out forwards;
-        }
-
-        @keyframes slideUpBounce {
-            0% { opacity: 0; transform: translateY(50px); }
-            70% { opacity: 1; transform: translateY(-10px); }
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .form-group label {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+            60% { opacity: 1; transform: translateY(-10px) scale(1.05); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .form-control {
-            border-radius: 8px;
-            padding: 0.75rem;
-            transition: var(--transition);
-            background-color: var(--light-bg);
-            color: var(--text-color);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(220, 20, 60, 0.25);
+        @keyframes parallax {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
         }
 
         .btn-primary {
             background: var(--gradient-bg);
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 10px;
             font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 350px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(29, 53, 87, 0.95), rgba(42, 42, 42, 0.95));
+            color: var(--text-color);
+            box-shadow: var(--shadow);
+            transition: left 0.5s ease;
+            z-index: 2000;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-content {
+            padding: 2rem;
+        }
+
+        .sidebar-content h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .percentage-alert {
+            padding: 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ffffff, var(--light-bg));
+            box-shadow: var(--shadow), inset 0 0 15px rgba(230, 57, 70, 0.3);
+            border: 3px solid var(--primary-color);
+            text-align: center;
+        }
+
+        .percentage-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 1.5rem auto;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.1) 0%, transparent 70%);
+        }
+
+        .percentage-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .percentage-circle circle {
+            fill: none;
+            stroke: #ddd;
+            stroke-width: 14;
+        }
+
+        .percentage-circle .progress {
+            stroke: url(#gradientStroke);
+            stroke-dasharray: 0 471;
+            transition: stroke-dasharray 1.5s ease;
+        }
+
+        .percentage-circle .value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.8rem;
+            font-weight: 800;
         }
 
         footer {
-            background-color: var(--dark-bg);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 1rem;
+            background: var(--dark-bg);
+            color: #fff;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
+        }
+
+        footer .gear-cluster {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: conveyorText 10s linear infinite;
+            gap: 0.5rem;
         }
 
         footer i {
-            margin-left: 0.5rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
-            transition: var(--transition);
-            animation: gearSpin 3s linear infinite;
-        Ascendant;
-        }
-
-        footer i:hover {
-            transform: scale(1.2);
+            animation: gearSpin 4s linear infinite;
         }
 
         @keyframes gearSpin {
@@ -322,157 +271,40 @@
             100% { transform: rotate(360deg); }
         }
 
-        .modal-content {
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: var(--body-bg);
-            color: var(--text-color);
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -350px; /* Hidden by default */
-            width: 350px;
-            height: 100%;
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            box-shadow: var(--shadow);
-            transition: left 0.4s ease;
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            left: 0; /* Slide in when active */
-        }
-
-        .sidebar-content {
-            padding: 2rem;
-            text-align: left;
-        }
-
-        .sidebar-content h2 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .sidebar-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-content .btn-primary {
-            margin-top: 1rem;
-            width: 100%;
-        }
-
-        /* Adjust body when sidebar is open to prevent scrolling */
-        body.sidebar-open {
-            overflow: hidden;
-        }
-
-        @media (max-width: 992px) {
-            .navbar-nav .nav-link, .navbar .night-mode-toggle, .navbar .language-toggle {
-                padding: 0.6rem 0.8rem !important;
-                font-size: 0.85rem;
-            }
-            .dropdown-menu {
-                width: 100%;
-                max-height: 50vh;
-            }
+        .section-container {
+            padding: 3rem 0;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-            .hero-section {
-                padding: 3rem 0;
-                margin-top: 50px;
-            }
-            .hero-section h1 {
-                font-size: 1.8rem;
-            }
-            .hero-section h3 {
-                font-size: 1rem;
-            }
-            .center-image img {
-                max-width: 150px;
-            }
-            .section-container {
-                padding: 2rem 0;
-            }
-            .contact-form {
-                padding: 1.5rem;
-            }
-            .navbar-nav .nav-link, .navbar .night-mode-toggle, .navbar .language-toggle {
-                padding: 0.5rem 0.75rem !important;
-                font-size: 0.8rem;
-            }
-            .sidebar {
-                width: 280px;
-                left: -280px;
-            }
+            .hero-section h1 { font-size: 2.2rem; }
+            .hero-section h3 { font-size: 1.2rem; }
+            .center-image img { max-width: 200px; }
+            .sidebar { width: 300px; left: -300px; }
+            .percentage-circle { width: 130px; height: 130px; }
+            .percentage-circle .value { font-size: 2.2rem; }
         }
 
         @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1rem;
-            }
-            .hero-section h1 {
-                font-size: 1.5rem;
-            }
-            .hero-section h3 {
-                font-size: 0.9rem;
-            }
-            .center-image img {
-                max-width: 120px;
-            }
-            .percentage-alert {
-                padding: 1rem;
-            }
-            .contact-form {
-                padding: 1rem;
-            }
-            footer {
-                font-size: 0.85rem;
-                padding: 1rem;
-            }
-            .navbar-nav .nav-link, .navbar .night-mode-toggle, .navbar .language-toggle {
-                padding: 0.4rem 0.6rem !important;
-                font-size: 0.75rem;
-            }
-            .sidebar {
-                width: 100%;
-                left: -100%;
-            }
+            .hero-section h1 { font-size: 1.8rem; }
+            .hero-section h3 { font-size: 1rem; }
+            .center-image img { max-width: 160px; }
+            .sidebar { width: 100%; left: -100%; }
+            .percentage-circle { width: 110px; height: 110px; }
+            .percentage-circle .value { font-size: 1.8rem; }
         }
     </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
           if (typeof emailjs === 'undefined') {
-              console.error("EmailJS library failed to load. Check the CDN URL or network connection.");
+              console.error("EmailJS library failed to load.");
           } else {
-              console.log("EmailJS v4 library loaded successfully.");
-              emailjs.init({
-                  publicKey: "jKtrpo8v9_58AS4y8",
-              });
-              console.log("EmailJS initialized with public key: jKtrpo8v9_58AS4y8");
+              emailjs.init({ publicKey: "jKtrpo8v9_58AS4y8" });
           }
        })();
     </script>
 </head>
 <body>
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-content">
             <h2>WKW Automotive</h2>
@@ -481,8 +313,7 @@
             <p>Des matériaux aux aptitudes insoupçonnées pour l'industrie automobile et les applications industrielles orientées design.</p>
             <p><strong>WKW Tunisie S.A.R.L.</strong></p>
             <p>Zone Industrielle Utique</p>
-            <p>7060 Bizerte</p>
-            <p>Tunisie</p>
+            <p>7060 Bizerte, Tunisie</p>
             <button id="closeSidebar" class="btn btn-primary">Fermer</button>
         </div>
     </div>
@@ -495,32 +326,31 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#accueil" data-lang-key="home">Accueil</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#accueil" data-lang-key="home">Accueil</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="performanceDropdown" role="button" aria-expanded="false" data-lang-key="performance">
-                            Performance
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="performanceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="performance">Performance</a>
                         <ul class="dropdown-menu" aria-labelledby="performanceDropdown">
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux 5S UAP1', '80%')">Taux 5S UAP1</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux Gemba UAP1', '81%')">Taux Gemba UAP1</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux 5S Logistique', '80%')">Taux 5S Logistique</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux Gemba Logistique', '75%')">Taux Gemba Logistique</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux 5S Usine', '79%')">Taux 5S Usine</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux Gemba Usine', '78%')">Taux Gemba Usine</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux 5S UAP2', '77%')">Taux 5S UAP2</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showPercentage('Taux Gemba UAP2', '74%')">Taux Gemba UAP2</a></li>
-                            <li><a class="dropdown-item" href="https://www.google.com" target="_blank">Plan d'action Gemba</a></li>
-                            <li><a class="dropdown-item" href="https://www.yahoo.com" target="_blank">Plan d'action 5S</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux 5S UAP1" data-percentage="80">Taux 5S UAP1</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux Gemba UAP1" data-percentage="82">Taux Gemba UAP1</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux 5S Logistique" data-percentage="80">Taux 5S Logistique</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux Gemba Logistique" data-percentage="75">Taux Gemba Logistique</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux 5S Usine" data-percentage="79">Taux 5S Usine</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux Gemba Usine" data-percentage="78">Taux Gemba Usine</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux 5S UAP2" data-percentage="77">Taux 5S UAP2</a></li>
+                            <li><a class="dropdown-item percentage-item" href="#" data-title="Taux Gemba UAP2" data-percentage="75">Taux Gemba UAP2</a></li>
+                            <li><a class="dropdown-item" href=https://wkwgroup-my.sharepoint.com/:x:/r/personal/houssine_trabelsi_wkw-group_com/Documents/App%20PDF/Plan%20d%27action%20ligne%20app.xlsx?d=w1a2ebd41f88f4be0a6c87bf03ade0b8b&csf=1&web=1&e=eFZxtB" target="_blank">Plan d'action Gemba</a></li>
+                            <li><a class="dropdown-item" href="https://wkwgroup-my.sharepoint.com/:x:/r/personal/houssine_trabelsi_wkw-group_com/Documents/App%20PDF/Plan%20d%27action%205%20S%20app.xlsx?d=w7a7dfb3415884b3290dbfe066805cf20&csf=1&web=1&e=xmDan6" target="_blank">Plan d'action 5S</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="resources">
-                            Ressources
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-key="resources">Ressources</a>
                         <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
                             <li><a class="dropdown-item" href="https://forms.office.com/pages/responsepage.aspx?id=Yy2gqiIfe0W77Avd4jtr3wM3f1Qll_xKkMAzfzJQ_BRUM1hRVVYyQ0hBOFpGQ1lGMlgzSkpNS1BETC4u&route=shorturl" target="_blank">Audit Gemba OJT Ligne</a></li>
+                               <li><a class="dropdown-item" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Yy2gqiIfe0W77Avd4jtr3wM3f1Qll_xKkMAzfzJQ_BRUNEEyWERCWlhKUEs4NzNSQ0k1NUwxRUhHMS4u"_blank">Propositions d'amélioration</a></li>
+                              
+                              
+                              
+                              
                             <li><a class="dropdown-item" href="https://forms.office.com/pages/responsepage.aspx?id=Yy2gqiIfe0W77Avd4jtr3wM3f1Qll_xKkMAzfzJQ_BRUMDVBQkVHM002WUhaNUdINVpaTFpTTTVSRC4u&route=shorturl" target="_blank">Audit Gemba Mur Qualité</a></li>
                             <li><a class="dropdown-item" href="https://forms.office.com/pages/responsepage.aspx?id=Yy2gqiIfe0W77Avd4jtr3wM3f1Qll_xKkMAzfzJQ_BRURjJOMUdPOVFXU1FUR0tCN09WQTdJWVdHRS4u&route=shorturl" target="_blank">Audit Gemba Magasin</a></li>
                             <li><a class="dropdown-item" href="https://forms.office.com/pages/responsepage.aspx?id=Yy2gqiIfe0W77Avd4jtr3wM3f1Qll_xKkMAzfzJQ_BRUNzQ4MldBM0dTVzc0MFRHVlc0UlU2VE9QRi4u&route=shorturl" target="_blank">Audit 5S</a></li>
@@ -528,22 +358,16 @@
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/finG5RcRS1w">Instruction de nettoyage presse injection</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/pE_ptDrpPDM">F83</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/BweHTgi-L_Y">Instruction tri sélectif</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/PlZpe_P7OU8">Proposition d'amélioration</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/ntKqMhbqTII/VIDEO_ID_5S">Vidéo 5S</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/PlZpe_P7OU8">Propositions d'amélioration</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/ntKqMhbqTII">Vidéo 5S</a></li>
                             <li><a class="dropdown-item" href="https://wkwgroup-my.sharepoint.com/:x:/r/personal/houssine_trabelsi_wkw-group_com/_layouts/15/Doc.aspx?sourcedoc=%7BE62360FF-0F09-45B3-8656-782A6158348F%7D&file=Planning%205S.xlsx&action=default&mobileredirect=true" target="_blank">Planning 5S</a></li>
                             <li><a class="dropdown-item" href="https://wkwgroup-my.sharepoint.com/:x:/g/personal/houssine_trabelsi_wkw-group_com/ETxX6xG42nFJqQV1-PaMiFIB2aBMLG-Ux7JdHCwLSOYtIA?e=B1xLbs" target="_blank">Planning Gemba</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact" id="contactToggle" data-bs-toggle="collapse" data-bs-target="#contactSection" data-lang-key="contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link night-mode-toggle" id="nightModeToggle" data-lang-key="nightMode">Mode Nuit</button>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" id="contactToggle" data-bs-toggle="collapse" data-bs-target="#contactSection" data-lang-key="contact">Contact</a></li>
+                    <li class="nav-item"><button class="nav-link night-mode-toggle" id="nightModeToggle" data-lang-key="nightMode">Mode Nuit</button></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle language-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Langue
-                        </a>
+                        <a class="nav-link dropdown-toggle language-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Langue</a>
                         <ul class="dropdown-menu" aria-labelledby="languageDropdown">
                             <li><a class="dropdown-item" href="#" onclick="changeLanguage('fr')">Français</a></li>
                             <li><a class="dropdown-item" href="#" onclick="changeLanguage('ar')">العربية</a></li>
@@ -567,9 +391,21 @@
     </section>
 
     <section id="percentageResult" class="section-container container" style="display: none;">
-        <div class="percentage-alert" id="percentageDisplay">
-            <h4 id="percentageTitle"></h4>
-            <p id="percentageValue" class="display-4"></p>
+        <div class="percentage-alert">
+            <h4 id="percentageTitle" class="mb-3"></h4>
+            <div class="percentage-circle">
+                <svg width="150" height="150">
+                    <defs>
+                        <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color: #e63946;" />
+                            <stop offset="100%" style="stop-color: #457b9d;" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="75" cy="75" r="65" />
+                    <circle class="progress" cx="75" cy="75" r="65" />
+                </svg>
+                <p id="percentageValue" class="value"></p>
+            </div>
         </div>
     </section>
 
@@ -613,84 +449,29 @@
     </section>
 
     <footer data-lang-key="footer">
-        © جميع الحقوق محفوظة WKW Amélioration Département <i class="fas fa-cogs"></i>
+        <span>© جميع الحقوق محفوظة WKW Amélioration Département</span>
+        <div class="gear-cluster">
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-cog" style="font-size: 1.2rem; animation-direction: reverse;"></i>
+            <i class="fas fa-cog" style="font-size: 0.9rem;"></i>
+        </div>
     </footer>
 
     <script>
         const translations = {
-            fr: {
-                home: "Accueil",
-                performance: "Performance",
-                resources: "Ressources",
-                contact: "Contact",
-                nightMode: "Mode Nuit",
-                heroTitle: "Département Amélioration Continue WKW",
-                heroSubtitle: "L’amélioration continue est bien plus qu’une simple démarche; c’est le cœur battant de la performance industrielle moderne.",
-                contactTitle: "Contactez-nous",
-                nameLabel: "Nom:",
-                emailLabel: "Email:",
-                messageLabel: "Message:",
-                sendButton: "Envoyer",
-                footer: "© Tous droits réservés WKW Amélioration Département"
-            },
-            ar: {
-                home: "الرئيسية",
-                performance: "الأداء",
-                resources: "الموارد",
-                contact: "اتصل بنا",
-                nightMode: "الوضع الليلي",
-                heroTitle: "قسم التحسين المستمر WKW",
-                heroSubtitle: "التحسين المستمر هو أكثر من مجرد نهج؛ إنه قلب الأداء الصناعي الحديث النابض.",
-                contactTitle: "اتصل بنا",
-                nameLabel: "الاسم:",
-                emailLabel: "البريد الإلكتروني:",
-                messageLabel: "الرسالة:",
-                sendButton: "إرسال",
-                footer: "© جميع الحقوق محفوظة قسم التحسين WKW"
-            },
-            en: {
-                home: "Home",
-                performance: "Performance",
-                resources: "Resources",
-                contact: "Contact",
-                nightMode: "Night Mode",
-                heroTitle: "WKW Continuous Improvement Department",
-                heroSubtitle: "Continuous improvement is more than just an approach; it’s the beating heart of modern industrial performance.",
-                contactTitle: "Contact Us",
-                nameLabel: "Name:",
-                emailLabel: "Email:",
-                messageLabel: "Message:",
-                sendButton: "Send",
-                footer: "© All rights reserved WKW Improvement Department"
-            },
-            de: {
-                home: "Startseite",
-                performance: "Leistung",
-                resources: "Ressourcen",
-                contact: "Kontakt",
-                nightMode: "Nachtmodus",
-                heroTitle: "WKW Abteilung für kontinuierliche Verbesserung",
-                heroSubtitle: "Kontinuierliche Verbesserung ist mehr als nur ein Ansatz; sie ist das schlagende Herz moderner industrieller Leistung.",
-                contactTitle: "Kontaktieren Sie uns",
-                nameLabel: "Name:",
-                emailLabel: "E-Mail:",
-                messageLabel: "Nachricht:",
-                sendButton: "Senden",
-                footer: "© Alle Rechte vorbehalten WKW Verbesserungsabteilung"
-            }
+            fr: { home: "Accueil", performance: "Performance", resources: "Ressources", contact: "Contact", nightMode: "Mode Nuit", heroTitle: "Département Amélioration Continue WKW", heroSubtitle: "L’amélioration continue est bien plus qu’une simple démarche; c’est le cœur battant de la performance industrielle moderne.", contactTitle: "Contactez-nous", nameLabel: "Nom:", emailLabel: "Email:", messageLabel: "Message:", sendButton: "Envoyer", footer: "© Tous droits réservés WKW Amélioration Département" },
+            ar: { home: "الرئيسية", performance: "الأداء", resources: "الموارد", contact: "اتصل بنا", nightMode: "الوضع الليلي", heroTitle: "قسم التحسين المستمر WKW", heroSubtitle: "التحسين المستمر هو أكثر من مجرد نهج؛ إنه قلب الأداء الصناعي الحديث النابض.", contactTitle: "اتصل بنا", nameLabel: "الاسم:", emailLabel: "البريد الإلكتروني:", messageLabel: "الرسالة:", sendButton: "إرسال", footer: "© جميع الحقوق محفوظة قسم التحسين WKW" },
+            en: { home: "Home", performance: "Performance", resources: "Resources", contact: "Contact", nightMode: "Night Mode", heroTitle: "WKW Continuous Improvement Department", heroSubtitle: "Continuous improvement is more than just an approach; it’s the beating heart of modern industrial performance.", contactTitle: "Contact Us", nameLabel: "Name:", emailLabel: "Email:", messageLabel: "Message:", sendButton: "Send", footer: "© All rights reserved WKW Improvement Department" },
+            de: { home: "Startseite", performance: "Leistung", resources: "Ressourcen", contact: "Kontakt", nightMode: "Nachtmodus", heroTitle: "WKW Abteilung für kontinuierliche Verbesserung", heroSubtitle: "Kontinuierliche Verbesserung ist mehr als nur ein Ansatz; sie ist das schlagende Herz moderner industrieller Leistung.", contactTitle: "Kontaktieren Sie uns", nameLabel: "Name:", emailLabel: "E-Mail:", messageLabel: "Nachricht:", sendButton: "Senden", footer: "© Alle Rechte vorbehalten WKW Verbesserungsabteilung" }
         };
 
         function changeLanguage(lang) {
             document.documentElement.lang = lang;
             document.body.setAttribute('lang', lang);
-
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key] + (element.tagName === 'FOOTER' ? ' <i class="fas fa-cogs"></i>' : '');
-                }
+                if (translations[lang][key]) element.innerHTML = translations[lang][key];
             });
-
             document.querySelector('.navbar-brand').textContent = "WKW AUTOMOTIVE";
             localStorage.setItem('language', lang);
         }
@@ -698,130 +479,74 @@
         const savedLang = localStorage.getItem('language') || 'fr';
         changeLanguage(savedLang);
 
-        const ADMIN_PASSWORD = "admin123";
-        let isAuthenticated = false;
-
+        // Night mode toggle
         const toggleButton = document.getElementById('nightModeToggle');
         const body = document.body;
-        const navbar = document.querySelector('.navbar');
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('night-mode');
+            const isNightMode = body.classList.contains('night-mode');
+            toggleButton.textContent = isNightMode ? 'Mode Jour' : 'Mode Nuit';
+            localStorage.setItem('nightMode', isNightMode ? 'enabled' : 'disabled');
+        });
 
         if (localStorage.getItem('nightMode') === 'enabled') {
             body.classList.add('night-mode');
-            toggleButton.innerHTML = translations[savedLang].nightMode.replace("Nuit", "Jour").replace("Night", "Day").replace("ليلي", "نهاري").replace("Nacht", "Tag");
+            toggleButton.textContent = 'Mode Jour';
         }
 
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('night-mode');
-            const currentLang = document.documentElement.lang;
-            if (body.classList.contains('night-mode')) {
-                toggleButton.innerHTML = translations[currentLang].nightMode.replace("Nuit", "Jour").replace("Night", "Day").replace("ليلي", "نهاري").replace("Nacht", "Tag");
-                localStorage.setItem('nightMode', 'enabled');
-            } else {
-                toggleButton.innerHTML = translations[currentLang].nightMode;
-                localStorage.setItem('nightMode', 'disabled');
+        // Password protection for Performance dropdown
+        const ADMIN_PASSWORD = 'admin123';
+        let isAuthenticated = false;
+
+        const performanceDropdown = document.getElementById('performanceDropdown');
+        performanceDropdown.addEventListener('click', (e) => {
+            if (!isAuthenticated) {
+                e.preventDefault();
+                const password = prompt('Entrez le mot de passe pour accéder à la section Performance:');
+                if (password === ADMIN_PASSWORD) {
+                    isAuthenticated = true;
+                    const dropdown = new bootstrap.Dropdown(performanceDropdown);
+                    dropdown.toggle(); // Manually open the dropdown
+                } else if (password !== null) { // Check if user didn't cancel
+                    alert('Mot de passe incorrect!');
+                }
             }
         });
 
+        // Percentage display function
         function showPercentage(title, percentage) {
             const section = document.getElementById('percentageResult');
             const percentageValue = document.getElementById('percentageValue');
-            const display = document.getElementById('percentageDisplay');
+            const progressCircle = document.querySelector('.percentage-circle .progress');
             const numericValue = parseFloat(percentage);
 
-            document.getElementById('percentageTitle').innerText = title;
-            percentageValue.innerText = percentage;
+            document.getElementById('percentageTitle').textContent = title;
+            percentageValue.textContent = percentage + '%';
 
-            if (numericValue >= 0 && numericValue <= 74) {
-                percentageValue.style.color = 'var(--red-color)';
-            } else if (numericValue >= 75 && numericValue <= 89) {
-                percentageValue.style.color = 'var(--orange-color)';
-            } else if (numericValue >= 90 && numericValue <= 100) {
-                percentageValue.style.color = 'var(--green-color)';
-            }
+            if (numericValue <= 74) percentageValue.style.color = 'var(--red-color)';
+            else if (numericValue <= 89) percentageValue.style.color = 'var(--orange-color)';
+            else percentageValue.style.color = 'var(--green-color)';
+
+            const dashArray = (numericValue / 100) * 471;
+            progressCircle.style.strokeDasharray = `${dashArray} 471`;
 
             section.style.display = 'block';
-            display.classList.add('active');
             section.scrollIntoView({ behavior: 'smooth' });
-
-            setTimeout(() => display.classList.remove('active'), 3000);
         }
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        document.getElementById('performanceDropdown').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (!isAuthenticated) {
-                const password = prompt("Veuillez entrer le mot de passe administrateur :");
-                if (password === ADMIN_PASSWORD) {
-                    isAuthenticated = true;
-                    alert("Accès autorisé !");
-                    const dropdown = new bootstrap.Dropdown(this);
-                    dropdown.show();
-                } else {
-                    alert("Mot de passe incorrect !");
-                }
-            } else {
-                const dropdown = new bootstrap.Dropdown(this);
-                dropdown.toggle();
-            }
-        });
-
-        document.getElementById('contactToggle').addEventListener('click', function(e) {
-            e.preventDefault();
-            const contactSection = document.getElementById('contactSection');
-            const form = contactSection.querySelector('.contact-form');
-            const collapse = new bootstrap.Collapse(contactSection, {
-                toggle: true
-            });
-            contactSection.addEventListener('shown.bs.collapse', () => {
-                form.classList.add('show');
-            });
-            contactSection.addEventListener('hidden.bs.collapse', () => {
-                form.classList.remove('show');
-            });
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(link => {
-            link.addEventListener('click', e => {
-                const videoSrc = e.target.getAttribute('data-video');
-                document.getElementById('videoPlayer').src = videoSrc;
-            });
-        });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log("Attempting to send email using sendForm...");
-            emailjs.sendForm('service_bvzi4ft', 'template_py9w0zf', this)
-                .then((response) => {
-                    console.log("Email sent successfully:", response.status, response.text);
-                    alert('Message envoyé avec succès!');
-                    this.reset();
-                }, (error) => {
-                    console.error("Failed to send email:", error);
-                    alert('Erreur lors de l\'envoi du message: ' + error.text);
-                });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+        // Percentage item click handlers (only work if authenticated)
+        document.querySelectorAll('.percentage-item').forEach(item => {
+            item.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                if (isAuthenticated) {
+                    const title = item.getAttribute('data-title');
+                    const percentage = item.getAttribute('data-percentage');
+                    showPercentage(title, percentage);
                 }
             });
         });
 
-        // Sidebar Toggle
+        // Sidebar toggle
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
         const closeSidebar = document.getElementById('closeSidebar');
@@ -829,20 +554,44 @@
         sidebarToggle.addEventListener('click', (e) => {
             e.preventDefault();
             sidebar.classList.toggle('active');
-            body.classList.toggle('sidebar-open');
         });
 
         closeSidebar.addEventListener('click', () => {
             sidebar.classList.remove('active');
-            body.classList.remove('sidebar-open');
         });
 
-        // Close sidebar when clicking outside
         document.addEventListener('click', (e) => {
             if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target) && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
-                body.classList.remove('sidebar-open');
             }
+        });
+
+        // Contact section toggle
+        document.getElementById('contactToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contactSection');
+            const collapse = new bootstrap.Collapse(contactSection, { toggle: true });
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Video modal
+        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(link => {
+            link.addEventListener('click', e => {
+                const videoSrc = e.target.getAttribute('data-video');
+                document.getElementById('videoPlayer').src = videoSrc;
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            emailjs.sendForm('service_bvzi4ft', 'template_py9w0zf', this)
+                .then(() => {
+                    alert('Message envoyé avec succès!');
+                    this.reset();
+                }, (error) => {
+                    alert('Erreur lors de l\'envoi du message: ' + error.text);
+                });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
